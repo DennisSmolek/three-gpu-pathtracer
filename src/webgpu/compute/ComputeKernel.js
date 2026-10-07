@@ -46,6 +46,13 @@ export class ComputeKernel {
 			}
 
 			const node = parameters[ key ];
+			// Global node IDs change between equivalent kernels and defeat shader caching.
+			if ( node.isStorageBufferNode && ! node.name ) {
+
+				node.setName( `pt_${ key }` );
+
+			}
+
 			if ( 'value' in node ) {
 
 				Object.defineProperty( this, key, {

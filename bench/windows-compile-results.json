@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-07",
+  "upstreamBase": "5f0ad5154a44224ae4b6c801b65778471dabf367",
+  "three": "0.186.1",
+  "browser": "Chrome/154.0.8037.98",
+  "gpu": {
+    "vendorId": 4318,
+    "deviceId": 9504,
+    "subSysId": 319557699,
+    "revision": 161,
+    "vendorString": "",
+    "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "driverVendor": "NVIDIA",
+    "driverVersion": "32.0.15.9200"
+  },
+  "profilePolicy": "Fresh owned browser profile per leg; driver cache retained; sequential jobs; alternating order",
+  "primitives": [
+    {
+      "run": 0,
+      "mode": "sync",
+      "firstFullResolutionMs": 6264.9000000059605,
+      "maxFrameGapMs": 4102.9,
+      "syncComputeCalls": 15,
+      "asyncComputeCalls": 0,
+      "errors": [],
+      "consoleErrors": []
+    },
+    {
+      "run": 0,
+      "mode": "async",
+      "firstFullResolutionMs": 5943.0999999940395,
+      "maxFrameGapMs": 260.6,
+      "syncComputeCalls": 0,
+      "asyncComputeCalls": 15,
+      "errors": [],
+      "consoleErrors": []
+    },
+    {
+      "run": 1,
+      "mode": "async",
+      "firstFullResolutionMs": 5770.199999988079,
+      "maxFrameGapMs": 272.70000000000005,
+      "syncComputeCalls": 0,
+      "asyncComputeCalls": 15,
+      "errors": [],
+      "consoleErrors": []
+    },
+    {
+      "run": 1,
+      "mode": "sync",
+      "firstFullResolutionMs": 5937.9000000059605,
+      "maxFrameGapMs": 4054.6000000000004,
+      "syncComputeCalls": 15,
+      "asyncComputeCalls": 0,
+      "errors": [],
+      "consoleErrors": []
+    },
+    {
+      "run": 2,
+      "mode": "sync",
+      "firstFullResolutionMs": 5870.800000011921,
+      "maxFrameGapMs": 4024.2,
+      "syncComputeCalls": 15,
+      "asyncComputeCalls": 0,
+      "errors": [],
+      "consoleErrors": []
+    },
+    {
+      "run": 2,
+      "mode": "async",
+      "firstFullResolutionMs": 5857.5999999940395,
+      "maxFrameGapMs": 278.8,
+      "syncComputeCalls": 0,
+      "asyncComputeCalls": 15,
+      "errors": [],
+      "consoleErrors": []
+    }
+  ],
+  "wavefront": [
+    {
+      "run": 0,
+      "variant": "baseline",
+      "setupMs": 3829.199999988079,
+      "secondInstanceMs": 2092.9000000059605,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "secondImageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "9ab1bfa46c82fd33d19a16c3299378fdb2292f1b62d9dfa11e5430edfd889771",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    },
+    {
+      "run": 0,
+      "variant": "stable-buffers",
+      "setupMs": 3802.699999988079,
+      "secondInstanceMs": 342.40000000596046,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "secondImageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "9ab1bfa46c82fd33d19a16c3299378fdb2292f1b62d9dfa11e5430edfd889771",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    },
+    {
+      "run": 1,
+      "variant": "stable-buffers",
+      "setupMs": 3862.7000000178814,
+      "secondInstanceMs": 341.90000000596046,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "secondImageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "9ab1bfa46c82fd33d19a16c3299378fdb2292f1b62d9dfa11e5430edfd889771",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    },
+    {
+      "run": 1,
+      "variant": "baseline",
+      "setupMs": 3789.0999999940395,
+      "secondInstanceMs": 2142.7999999821186,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "secondImageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "9ab1bfa46c82fd33d19a16c3299378fdb2292f1b62d9dfa11e5430edfd889771",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    },
+    {
+      "run": 2,
+      "variant": "baseline",
+      "setupMs": 3976.800000011921,
+      "secondInstanceMs": 2057.9000000059605,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "secondImageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "9ab1bfa46c82fd33d19a16c3299378fdb2292f1b62d9dfa11e5430edfd889771",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    },
+    {
+      "run": 2,
+      "variant": "stable-buffers",
+      "setupMs": 3831.800000011921,
+      "secondInstanceMs": 328.19999998807907,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "secondImageHash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "9ab1bfa46c82fd33d19a16c3299378fdb2292f1b62d9dfa11e5430edfd889771",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "d83084d138c0c9a36c8264e384f3ade71b765b196849a14627c6e2f7d0b1e19b",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    }
+  ],
+  "megakernelSmoke": [
+    {
+      "run": 0,
+      "variant": "stable-buffers",
+      "setupMs": 5761.100000023842,
+      "secondInstanceMs": 297.19999998807907,
+      "syncComputeCalls": 0,
+      "tableHash": "44dac662ec693963396d7475f654f8817566c47942243fffc9c01a7e88020a61",
+      "imageHash": "12625142d1ed9cdb950471ec0ff3b2ca085b5e76e3ad664cc0d9f245be7e18c7",
+      "secondImageHash": "12625142d1ed9cdb950471ec0ff3b2ca085b5e76e3ad664cc0d9f245be7e18c7",
+      "resourceIsolation": {
+        "alternateImage": {
+          "hash": "2a106e32db9290bcb8e1c7bc1bbcf97dae31e7bd17502e2ef9c0078ba153a661",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "originalImage": {
+          "hash": "12625142d1ed9cdb950471ec0ff3b2ca085b5e76e3ad664cc0d9f245be7e18c7",
+          "bytes": 65536,
+          "nonzero": true
+        },
+        "preserved": true,
+        "changed": true
+      },
+      "errors": [],
+      "messages": []
+    }
+  ],
+  "isolatedR185Compilation": [
+    {
+      "run": 0,
+      "concurrency": 1,
+      "totalMs": 4010.699999988079,
+      "sourceHash": "398f4ed1e02dee0fa97a80acbd2675ce8c0cffd6e6888ad232c41d666be365e1"
+    },
+    {
+      "run": 0,
+      "concurrency": 4,
+      "totalMs": 2945.4000000059605,
+      "sourceHash": "398f4ed1e02dee0fa97a80acbd2675ce8c0cffd6e6888ad232c41d666be365e1"
+    },
+    {
+      "run": 1,
+      "concurrency": 4,
+      "totalMs": 3000.7999999821186,
+      "sourceHash": "398f4ed1e02dee0fa97a80acbd2675ce8c0cffd6e6888ad232c41d666be365e1"
+    },
+    {
+      "run": 1,
+      "concurrency": 1,
+      "totalMs": 4643.800000011921,
+      "sourceHash": "398f4ed1e02dee0fa97a80acbd2675ce8c0cffd6e6888ad232c41d666be365e1"
+    },
+    {
+      "run": 2,
+      "concurrency": 1,
+      "totalMs": 4092,
+      "sourceHash": "398f4ed1e02dee0fa97a80acbd2675ce8c0cffd6e6888ad232c41d666be365e1"
+    },
+    {
+      "run": 2,
+      "concurrency": 4,
+      "totalMs": 3009.9000000059605,
+      "sourceHash": "398f4ed1e02dee0fa97a80acbd2675ce8c0cffd6e6888ad232c41d666be365e1"
+    }
+  ],
+  "portableTests": {
+    "passed": 6,
+    "command": "node --test test/prepareComputeAction.test.js"
+  }
+}

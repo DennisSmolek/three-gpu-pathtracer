@@ -152,6 +152,9 @@ export interface DebugBoundsOptions {
 export class WebGPUPathTracer {
 
 	constructor( renderer: WebGPURenderer );
+	static createAsync( renderer: WebGPURenderer, options?: { useMegakernel?: boolean } ): Promise<WebGPUPathTracer>;
+	setSceneAsync( scene: Scene, camera: Camera ): Promise<void>;
+	compileAsync( options?: { concurrency?: number } ): Promise<void>;
 
 	maxBounces: number;
 	frameBudget: number;
