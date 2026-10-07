@@ -1,4 +1,4 @@
-import { Box3, DataTexture, LinearFilter, Vector2, Scene, PerspectiveCamera, Color, NoToneMapping, FloatType, Timer, StorageTexture, MeshBasicNodeMaterial, Matrix4, WebGPUCoordinateSystem } from 'three/webgpu';
+import { Box3, DataTexture, LinearFilter, Vector2, Scene, PerspectiveCamera, OrthographicCamera, Color, NoToneMapping, FloatType, Timer, StorageTexture, MeshBasicNodeMaterial, Matrix4, WebGPUCoordinateSystem } from 'three/webgpu';
 import { uv, uniform, varying } from 'three/tsl';
 import { SkinnedMeshBVH, MeshBVH, SAH } from 'three-mesh-bvh';
 import { ndcToCameraRay, rayStruct, wgslTagFn } from 'three-mesh-bvh/webgpu';
@@ -14,6 +14,7 @@ import { SampleDensityMaterial } from './materials/debug/SampleDensityMaterial.j
 import { setCommonAttributes } from '../core/utils/GeometryPreparationUtils.js';
 import { getLights } from '../core/utils/sceneUpdateUtils.js';
 import { GltfCompliantMaterial } from './materials/GltfCompliantMaterial.js';
+import { prepareComputeAction } from './compute/prepareComputeAction.js';
 import { TRANSMISSIVE_BACKGROUND_OVERLAY } from './constants.js';
 import * as RANDOM_BLUE_DITHER from './nodes/rand/bluedither.wgsl.js';
 /** @import { Camera, Scene, Texture, WebGPURenderer } from 'three/webgpu' */
@@ -32,6 +33,7 @@ import * as RANDOM_BLUE_DITHER from './nodes/rand/bluedither.wgsl.js';
 
 const _resolution = new Vector2();
 const _color = new Color();
+const _compileCamera = new OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
 
 class TextureCache {
 
@@ -135,6 +137,107 @@ class TextureCache {
  * the accumulated image restarts it.
  */
 export class WebGPUPathTracer {
+
+	/**
+	 * Constructs a tracer without synchronously compiling its initial clear kernels.
+	 * @param {WebGPURenderer} renderer
+	 * @param {Object} options
+	 * @param {boolean} [options.useMegakernel=false]
+	 * @returns {Promise<WebGPUPathTracer>}
+	 */
+	static async createAsync( renderer, { useMegakernel = false } = {} ) {
+
+		return prepareComputeAction( renderer, () => {
+
+			const tracer = new WebGPUPathTracer( renderer );
+			if ( useMegakernel ) tracer.useMegakernel( true );
+			return tracer;
+
+		} );
+
+	}
+
+	/**
+	 * Captures a scene and prepares compute and presentation pipelines asynchronously.
+	 * Geometry/BVH construction remains synchronous. Suspend rendering until this resolves.
+	 * @param {Scene} scene
+	 * @param {Camera} camera
+	 * @returns {Promise<void>}
+	 */
+	async setSceneAsync( scene, camera ) {
+
+		await prepareComputeAction( this._renderer, () => this.setScene( scene, camera ) );
+		await this.compileAsync();
+
+	}
+
+	/**
+	 * Prepares the current configuration, then resets accumulation. Repeat after changing
+	 * backend, random strategy, camera type, output layout, or material model.
+	 * Optional denoisers/upscalers retain their own preparation lifecycle.
+	 * @param {Object} options
+	 * @param {number} [options.concurrency=4]
+	 * @returns {Promise<void>}
+	 */
+	async compileAsync( { concurrency = 4 } = {} ) {
+
+		const renderer = this._renderer;
+		const backend = this._pathTracer;
+		const wasPaused = this.pause;
+		const materialInitialized = this.material.initialized;
+		this.pause = true;
+		try {
+
+			await prepareComputeAction( renderer, () => {
+
+				if ( ! this.material.initialized ) {
+
+					this.material.init( renderer );
+					this.material.initialized = true;
+
+				}
+
+				if ( this.synchronizeRenderSize ) {
+
+					renderer.getDrawingBufferSize( _resolution );
+					this.setSize( Math.floor( this.renderScale * _resolution.x ), Math.floor( this.renderScale * _resolution.y ) );
+
+				}
+
+				const width = Math.max( 1, this._size.x );
+				const height = Math.max( 1, this._size.y );
+				if ( this.dynamicLowRes ) {
+
+					backend.lowResMode = true;
+					backend.setSize( Math.ceil( this.lowResScale * width ), Math.ceil( this.lowResScale * height ) );
+					backend.update();
+
+				}
+
+				backend.lowResMode = false;
+				backend.setSize( width, height );
+				backend.update();
+				this.reset();
+
+			}, concurrency );
+			await backend.compileSampleCountsAsync();
+			this._blitQuad.material.texture = backend.outputTarget;
+			this._blitQuad.material.fromTexture = this._lowResTarget;
+			await renderer.compileAsync( this.scene, this.camera );
+			await renderer.compileAsync( this._blitQuad._mesh, _compileCamera );
+
+		} catch ( error ) {
+
+			if ( ! materialInitialized ) this.material.initialized = false;
+			throw error;
+
+		} finally {
+
+			this.pause = wasPaused;
+
+		}
+
+	}
 
 	/**
 	 * Maximum number of times a ray can scatter before the path is terminated. Higher values

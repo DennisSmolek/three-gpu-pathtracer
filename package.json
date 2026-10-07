@@ -45,7 +45,7 @@
     "@monogrid/gainmap-js": "^3.0.5",
     "@pmndrs/upscaler": "^0.3.0",
     "@types/node": "^24.3.1",
-    "@types/three": "^0.185.1",
+    "@types/three": "^0.186.0",
     "@typescript-eslint/eslint-plugin": "^8.40.0",
     "@vitejs/plugin-basic-ssl": "^2.3.0",
     "@webgpu/types": "^0.1.72",
@@ -63,18 +63,22 @@
     "puppeteer": "^24.42.0",
     "rollup": "^2.70.0",
     "simple-git": "^3.10.0",
-    "three": "^0.185.1",
+    "three": "^0.186.1",
     "three-mesh-bvh": "^0.9.15",
     "typescript": "^5.9.2",
     "vite": "^8.2.2",
     "yargs": "^17.5.1"
   },
   "peerDependencies": {
-    "three": ">=0.185.0",
+    "three": ">=0.186.0",
     "three-mesh-bvh": ">=0.9.15",
     "xatlas-web": "^0.1.0"
   },
   "scripts": {
+    "bench:compile": "node scripts/measure-compile.mjs",
+    "bench:compile:raw": "node scripts/measure-shader-compile.mjs",
+    "bench:compile:example": "node scripts/measure-example-compile.mjs",
+    "test:compute-preparation": "node --test test/prepareComputeAction.test.js",
     "start": "vite --config ./vite.config.js",
     "build-examples": "vite build --config ./vite.config.js",
     "update-screenshots": "node ./scripts/push-screenshots.js",

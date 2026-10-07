@@ -167,6 +167,8 @@ export class PathTracerBackend {
 
 	}
 
+	async compileSampleCountsAsync() {}
+
 	resetSeed() {}
 
 	reset() {

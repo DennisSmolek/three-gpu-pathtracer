@@ -69,8 +69,8 @@ renderer = new THREE.WebGPURenderer();
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 await renderer.init();
 
-pathTracer = new WebGPUPathTracer( renderer );
-pathTracer.setScene( scene, camera );
+pathTracer = await WebGPUPathTracer.createAsync( renderer );
+await pathTracer.setSceneAsync( scene, camera );
 
 animate();
 
@@ -81,6 +81,8 @@ function animate() {
 
 }
 ```
+
+Async preparation requires three.js r186 or newer. Set the drawing-buffer size before preparing and start the animation loop after preparation resolves. `setSceneAsync` still builds geometry BVHs on the CPU. Use `compileAsync()` after changing a shader-generating configuration; it prepares the current size and backend and resets accumulation. See [Windows compile benchmarks](./bench/README.md) for measurements and reproduction commands.
 
 **Blurred Environment Map**
 
